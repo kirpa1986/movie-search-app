@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+
+:root {
+    --primary-color: rgb(3, 5, 36);
+    --secondary-color: rgb(31, 34, 77);
+    --menu-color: rgb(110, 113, 160);
+    --green: rgb(78, 219, 59);
+    --orange: rgb(221, 157, 38);
+    --red: rgb(216, 42, 29);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--primary-color);
+
+}
+
+header {
+    background: var(--secondary-color);
+    display: flex;
+    position: sticky;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    border-bottom: #f4f4f4 1px solid;
+}
+
+
+.menu i {
+    color: var(--primary-color);
+    margin-left: 2rem;
+    cursor: pointer;
+    transform: rotate(0);
+    transition: transform 1s ease, color 0.5s ease 0.5s;
+}
+
+.menu.active i {
+    transform: rotate(90deg);
+    color: var(--menu-color);
+}
+
+.menu .circle {
+    width: 200px; 
+    height: 200px;
+    position: absolute;
+    bottom: 0px;
+    z-index: -1;
+    transform: rotate(0deg);
+    background: var(--menu-color);
+    transform-origin: bottom left;
+    border-top-right-radius: 200px;
+    border-top: #f4f4f4 1px solid;
+    border-right: #f4f4f4 1px solid;
+    transition: transform 1s ease 0.2s, background 0.2s ease 0.5s;
+}
+
+.menu.active .circle {
+    transform: rotate(90deg);
+    background: var(--secondary-color);
+    border-top: #f4f4f4 1px solid;
+    border-right: #f4f4f4 1px solid;
+    transition: transform 1s ease
+}
+
+.settings { 
+    position: absolute;
+    top: 110%;
+    left: 0;
+    padding-left: 1rem;
+    list-style: none;
+    
+}
+
+.settings li {
+    transform: translateX(-200%);
+    transition: transform 0.5s ease;
+    margin-bottom: 0.5rem;
+}
+
+.menu.active + .settings li {
+    transform: translateX(0);
+    transition: transform 0.3s ease 0.5s; 
+}
+
+.settings .numbers {
+    color: var(--menu-color);
+    font-size: 0.9rem;
+    /* margin-left: 1rem; */
+    letter-spacing: 2.2px;
+    color: #f4f4f4
+}
+
+.settings .years {
+    transition-delay: 0.2s;
+    overflow: hidden;
+    width: 95%;
+    display: flex;
+    background: var(--primary-color);
+    border-radius: 0.5rem;
+    border: 1px solid var(--primary-color)
+}
+.menu.active + .settings .years {
+    transition-delay: 0.7s;
+}
+
+.settings .years button {
+    font-size: 0.7rem;
+    flex: 1;
+    border: 0;
+    background: transparent;
+    color: #f4f4f4;
+    padding: 0.5em;
+    cursor: pointer;
+    width: 2.5rem;
+}
+
+.settings .years button:hover {
+    color: var(--primary-color);
+    background: var(--menu-color);
+
+}
+
+.settings .years button.active {
+    color: var(--primary-color);
+    background: #f4f4f4;
+    text-decoration: underline;
+}
+
+
+.green {
+    color: var(--green)
+}
+
+.orange {
+    color: var(--orange)
+}
+
+.red {
+    color: var(--red);
+}
+
+
+
+#form {
+    padding: 1rem 2rem;
+}
+
+#search {
+    background: transparent;
+    border: 1px solid #000;
+    width: 10rem;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    outline: none;
+    color:rgb(110, 113, 160);
+}
+
+#search:focus {
+    background: transparent;
+}
+
+.movies-container {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 1rem 1rem;
+    gap: 1.5rem;
+}
+
+
+.movie {
+    width: 250px;
+    background: var(--secondary-color);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.movie img {
+    width: 100%;
+    flex: 1;
+}
+
+.movie .no-image  {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie .no-image img {
+    object-fit: fill;
+    transform: scale(0.5);
+}
+
+.movie .movie-info { 
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0.6rem 0.8rem;
+    color: #f4f4f4;
+    
+}
+
+.movie .movie-info .movie-title {
+    font-weight: 200;
+    letter-spacing: 1px;
+    padding-right: 1rem;
+}
+
+.movie .movie-info .movie-rating {
+    padding: 0.2rem 0.5rem;
+    font-weight: 400;
+    background: var(--primary-color);
+    font-size: 0.8rem;
+    border-radius: 0.3rem;
+}
+
+.movie .movie-overview {
+    position: absolute;
+    bottom: 0;
+    max-height: 0;
+    background: #f4f4f4;
+    width: 100%;
+    font-size: 0.9rem;
+    transition: max-height 0.5s ease;
+}
+
+.movie .movie-overview div {
+    padding: 1.5rem 1rem 1rem;
+}
+
+.movie:hover .movie-overview {
+    overflow: auto;
+    max-height: 100%;
+}
+
+
+@media (max-width: 576px) {
+    #search {
+        width: 8rem;
+    }
+    .movies-container {
+        justify-content: center;
+    }
+    .movie {
+        width: 350px;
+
+        object-fit: none;
+    }
+}
